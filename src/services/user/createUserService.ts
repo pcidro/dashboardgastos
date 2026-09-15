@@ -1,5 +1,6 @@
 import { hash } from "bcryptjs";
 import { prisma } from "../../lib/prisma.js";
+import { AppError } from "../../middlewares/AppError.js";
 import type { UserType } from "../../types/userType.js";
 
 export class createUserService {
@@ -12,7 +13,7 @@ export class createUserService {
     });
 
     if (userAlreadyExists) {
-      throw new Error("Usuário já cadastrado!");
+      throw new AppError("Usuário já cadastrado!", 400);
     }
 
     const passwordHash = await hash(password, 8);

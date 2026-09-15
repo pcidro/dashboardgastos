@@ -1,6 +1,7 @@
 import { compare } from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { prisma } from "../../lib/prisma.js";
+import { AppError } from "../../middlewares/AppError.js";
 
 interface AuthUserServiceProps {
   email: string;
@@ -18,13 +19,13 @@ export class AuthUserService {
     });
 
     if (!user) {
-      throw new Error("Email ou senha incorretos");
+      throw new AppError("Email ou senha incorretos", 401);
     }
 
     const passwordMatch = await compare(password, user.passwordHash);
 
     if (!passwordMatch) {
-      throw new Error("Email ou senha incorretos");
+      throw new AppError("Email ou senha incorretos", 401);
     }
 
     const token = jwt.sign(

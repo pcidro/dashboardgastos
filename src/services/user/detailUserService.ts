@@ -1,4 +1,5 @@
 import { prisma } from "../../lib/prisma.js";
+import { AppError } from "../../middlewares/AppError.js";
 
 export class DetailUserService {
   async execute(userId: string) {
@@ -16,7 +17,7 @@ export class DetailUserService {
     });
 
     if (!user) {
-      throw new Error("Usuário não encontrado");
+      throw new AppError("Usuário não encontrado", 404);
     }
 
     return user;
