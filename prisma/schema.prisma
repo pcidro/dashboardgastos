@@ -63,10 +63,10 @@ model Category {
 model Transaction {
   id          String            @id @default(uuid())
   description String
-  amount      Decimal           @db.Decimal(10, 2)
+  amount      Int         
   date        DateTime
   type        TransactionType
-  status      TransactionStatus @default(PAID)
+  status      TransactionStatus @default(PENDING)
 
   paymentMethod PaymentMethod?
   notes         String?
