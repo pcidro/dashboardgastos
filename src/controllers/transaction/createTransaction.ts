@@ -2,7 +2,7 @@ import type { Request, Response } from "express";
 import { createTransactionService } from "../../services/transaction/createTransactionService.js";
 import type { CreateTransactionDTO } from "../../types/transactionType.js";
 
-export class CreateUserController {
+export class createTransaction {
   async handle(req: Request, res: Response) {
     const {
       description,
