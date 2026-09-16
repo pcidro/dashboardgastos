@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import { updateTransactionService } from "../../services/transaction/updateTransactionService.js";
 
-export class UpdateCatController {
+export class UpdateTransactionController {
   async handle(req: Request, res: Response) {
     const {
       description,
