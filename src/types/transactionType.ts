@@ -10,7 +10,6 @@ export type PaymentMethod =
   | "TRANSFERENCIA_BANCARIA"
   | "BOLETO"
   | "OUTRO";
-
 export interface Transaction {
   id: string;
   description: string;
