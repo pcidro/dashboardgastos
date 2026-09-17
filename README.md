@@ -339,18 +339,5 @@ erDiagram
 
 ---
 
-## 🧪 Tratamento de Erros
 
-A API possui middleware de tratamento de erro padronizado. Exceções controladas utilizam a classe `AppError`, retornando códigos HTTP semânticos (ex: `400 Bad Request`, `401 Unauthorized`, `404 Not Found`):
 
-```json
-{
-  "error": "Descrição clara do erro ocorrido"
-}
-```
-
----
-
-## 📄 Licença
-
-Este projeto está sob a licença [ISC](LICENSE).
