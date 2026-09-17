@@ -1,15 +1,15 @@
-export type TransactionType = "INCOME" | "EXPENSE";
+export type TransactionType = "RECEITA" | "DESPESA";
 
-export type TransactionStatus = "PENDING" | "PAID" | "OVERDUE";
+export type TransactionStatus = "PENDENTE" | "PAGO" | "ATRASADO";
 
 export type PaymentMethod =
   | "PIX"
-  | "CASH"
-  | "DEBIT_CARD"
-  | "CREDIT_CARD"
-  | "BANK_TRANSFER"
+  | "DINHEIRO"
+  | "CARTAO_DEBITO"
+  | "CARTAO_CREDITO"
+  | "TRANSFERENCIA_BANCARIA"
   | "BOLETO"
-  | "OTHER";
+  | "OUTRO";
 
 export interface Transaction {
   id: string;

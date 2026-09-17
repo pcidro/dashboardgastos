@@ -13,25 +13,26 @@ datasource db {
 }
 
 enum TransactionType {
-  INCOME
-  EXPENSE
+  RECEITA
+  DESPESA
 }
 
 enum TransactionStatus {
-  PENDING
-  PAID
-  OVERDUE
+  PENDENTE
+  PAGO
+  ATRASADO
 }
 
 enum PaymentMethod {
   PIX
-  CASH
-  DEBIT_CARD
-  CREDIT_CARD
-  BANK_TRANSFER
+  DINHEIRO
+  CARTAO_DEBITO
+  CARTAO_CREDITO
+  TRANSFERENCIA_BANCARIA
   BOLETO
-  OTHER
+  OUTRO
 }
+
 
 model User {
   id           String        @id @default(uuid())
@@ -66,7 +67,7 @@ model Transaction {
   amount      Int         
   date        DateTime
   type        TransactionType
-  status      TransactionStatus @default(PENDING)
+  status      TransactionStatus @default(PENDENTE)
 
   paymentMethod PaymentMethod?
   notes         String?

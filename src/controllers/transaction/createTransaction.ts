@@ -12,6 +12,7 @@ export class createTransaction {
       status,
       paymentMethod,
       categoryId,
+      notes,
     }: CreateTransactionDTO = req.body;
     const userId = req.user_id;
     const transaction = await new createTransactionService().execute({
@@ -23,6 +24,7 @@ export class createTransaction {
       status,
       userId,
       categoryId,
+      notes,
     });
     return res.json(transaction);
   }

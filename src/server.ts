@@ -1,4 +1,8 @@
-import express, { type Request, type Response, type NextFunction } from "express";
+import express, {
+  type Request,
+  type Response,
+  type NextFunction,
+} from "express";
 import cors from "cors";
 import { userRoutes } from "./routes/user.routes.js";
 import { transactionRoutes } from "./routes/transaction.routes.js";
@@ -29,7 +33,7 @@ app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
   return res.status(500).json({ error: "Internal server error" });
 });
 
-const port = 3333;
+const port = process.env.PORT || 3333;
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);

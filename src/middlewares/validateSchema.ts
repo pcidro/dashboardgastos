@@ -16,10 +16,26 @@ export const validateSchema =
         req.body = parsed.body;
       }
       if (parsed.query !== undefined) {
-        req.query = parsed.query as any;
+        try {
+          req.query = parsed.query as any;
+        } catch {
+          Object.defineProperty(req, "query", {
+            value: parsed.query,
+            configurable: true,
+            writable: true,
+          });
+        }
       }
       if (parsed.params !== undefined) {
-        req.params = parsed.params as any;
+        try {
+          req.params = parsed.params as any;
+        } catch {
+          Object.defineProperty(req, "params", {
+            value: parsed.params,
+            configurable: true,
+            writable: true,
+          });
+        }
       }
 
       return next();

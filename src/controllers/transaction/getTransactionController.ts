@@ -7,8 +7,15 @@ export class GetTransactionController {
 
     const getTransactionService = new GetTransactionService();
 
+    const { startDate, endDate } = req.query as {
+      startDate?: string;
+      endDate?: string;
+    };
+
     const transactions = await getTransactionService.execute({
       userId,
+      startDate,
+      endDate,
     });
 
     return res.json(transactions);
