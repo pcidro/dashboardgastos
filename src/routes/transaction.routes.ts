@@ -5,12 +5,15 @@ import { deleteTransactionController } from "../controllers/transaction/deleteTr
 import { GetTransactionController } from "../controllers/transaction/getTransactionController.js";
 import { GetTransactionByIdController } from "../controllers/transaction/gettransactionbyIdController.js";
 import { isAuthenticated } from "../middlewares/isAuthenticated.js";
-import { validateSchema } from "../middlewares/validateSchema.js";
+
 import { createTransactionSchema } from "../schemas/transaction/createTransactionSchema.js";
 import { updateTransactionSchema } from "../schemas/transaction/updateTransactionSchema.js";
 import { deleteTransactionSchema } from "../schemas/transaction/deleteTransactionSchema.js";
 import { getTransactionSchema } from "../schemas/transaction/getTransactionSchema.js";
 import { getTransactionByIdSchema } from "../schemas/transaction/getTransactionByIdSchema.js";
+import { resumoController } from "../controllers/resumo/resumoController.js";
+import { resumoTransacationSchema } from "../schemas/transaction/resumoTransactionSchema.js";
+import { validateSchema } from "../middlewares/validateSchema.js";
 
 const transactionRoutes = Router();
 
@@ -23,16 +26,21 @@ transactionRoutes.post(
 
 transactionRoutes.get(
   "/transaction",
-  isAuthenticated,
   validateSchema(getTransactionSchema),
   new GetTransactionController().handle,
 );
 
 transactionRoutes.get(
   "/transactions",
-  isAuthenticated,
   validateSchema(getTransactionSchema),
   new GetTransactionController().handle,
+);
+
+transactionRoutes.get(
+  "/transactions/summary",
+  isAuthenticated,
+  validateSchema(resumoTransacationSchema),
+  new resumoController().handle,
 );
 
 transactionRoutes.get(
@@ -57,4 +65,3 @@ transactionRoutes.delete(
 );
 
 export { transactionRoutes };
-
